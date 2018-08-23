@@ -32,7 +32,7 @@ class PostsController extends Controller
     {   
 
         $this->validate(request(),[
-            'title'=>'required',
+            'title'=>'required|unique:posts,title',
             'body'=>'required'
         ]);
 /*

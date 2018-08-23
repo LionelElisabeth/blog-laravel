@@ -29,7 +29,7 @@
             width: 20   0px;
             position: fixed;
             z-index: 1;
-            top: 70px;              /*Position sidebar*/
+            top: 76px;              /*Position sidebar*/
             right: 10px;            /*                */
             background: #eee;
             overflow-x: hidden;
@@ -77,6 +77,7 @@
         </div>
     </nav>
     @include('layouts.sidebar')
+    @include('common.errors')
     @yield('content')
 
     <!-- JavaScripts -->

@@ -7,7 +7,7 @@
 @section ('content')
 <div class="container">
     <div class="col-sm-offset-1 col-sm-8">     
-        <h1> {{$post->title}}</h1>
+        <h1>  {{$post->title}} </h1>
         {{$post->body}}
 
         <hr>
@@ -15,17 +15,21 @@
         <div class="comments">
             <ul class="list-group">
                 @foreach ($post->comments as $comment)
-                    <li class="list-group-items">
+                    <li class="list-group-item">
                         <strong>
                             {{ $comment->created_at->diffForHumans() }}: &nbsp;
                         </strong>
                         {{$comment->body}}
                     </li>
                 @endforeach
+
+                @if (count($post->comments) == 0)
+                    <li class="list-group-item">
+                    <p class="text-info">Be the first to add a comment!</p>
+                    </li>
+                @endif
             </ul>
         </div>
-        
-        @include('common.errors')
 
         <div class="card">
             <div class="card-block">
@@ -38,7 +42,7 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-default">Add Comment</button>
+                        <button type="submit" class="btn btn-primary">Add Comment</button>
                     </div>
                 </form>
             </div>

@@ -1,5 +1,5 @@
 
 
 <div class="sidenav">
-  <a href="/posts/create">Create post</a>  
+  <a href="/posts/create">Create post &nbsp</a>  
 </div>
