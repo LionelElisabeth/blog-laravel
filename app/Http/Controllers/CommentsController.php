@@ -14,10 +14,15 @@ class commentsController extends Controller
 {
     public function store (Post $post)
     {
-$this->validate(request(), ['body'=>'required|min:2']);
-
+        $this->validate(request(), ['body'=>'required|min:2']);
+        /*
         $post->addComment(Request('body'));
-
+        */
+        $comment = new Comment;
+        $comment->body = request('body');
+        $comment->post_id = $post->id;
+        $comment->user_id = auth()->id();
+        $comment->save();
         return back(); 
     }
 }

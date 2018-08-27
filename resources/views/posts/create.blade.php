@@ -1,5 +1,10 @@
 @extends ('layouts.app')
 
+@section ('pageName')
+    Create your post
+@endsection
+
+
 @section ('content')
 
 <div class="container">
@@ -31,15 +36,5 @@
     </div>
 </div>
 
-<?php /* Don't work (VIDEO12 2min56)
- @if (count($error))
- <div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
-*/?>
+<?php ?>
 @endsection

@@ -8,8 +8,13 @@
 <div class="container">
     <div class="col-sm-offset-1 col-sm-8">     
         <h1>  {{$post->title}} </h1>
+        
         {{$post->body}}
-
+        
+        <br><br>
+        <p class="blog-post-meta">
+        by <strong>{{$post->user->name}} </strong> the {{  $post-> created_at->toFormattedDateString() }}
+        </p>
         <hr>
         
         <div class="comments">
@@ -19,6 +24,7 @@
                         <strong>
                             {{ $comment->created_at->diffForHumans() }}: &nbsp;
                         </strong>
+                        <font color="#6d4c41"> by &nbsp;{{$comment->user->name}} </font> &nbsp;&nbsp;
                         {{$comment->body}}
                     </li>
                 @endforeach
@@ -31,6 +37,7 @@
             </ul>
         </div>
 
+        @if (auth()->id() != null) 
         <div class="card">
             <div class="card-block">
 
@@ -45,9 +52,19 @@
                         <button type="submit" class="btn btn-primary">Add Comment</button>
                     </div>
                 </form>
+            </div>   
+        </div>
+      
+        @else
+            <div>
+                <a href="/register">
+                    <button type="button" class="btn btn-default">Register to add a comment.</button>
+                </a>  
             </div>
 
-        </div>
+        @endif
+
+
 
     </div>
 </div>

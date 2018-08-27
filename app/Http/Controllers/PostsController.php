@@ -11,6 +11,12 @@ use App\Http\Controllers\Controller;
 
 class PostsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['except'=>['index','show']]);
+    }
+
     public function index()
     {
         $posts = Post::all();
@@ -45,8 +51,10 @@ class PostsController extends Controller
 */
         Post::create([
             'title' => request('title','required'),
-            'body' => request('body', 'required')
+            'body' => request('body', 'required'),
+            'user_id'=> auth()->id()
         ]);
+
 
         return redirect('/posts/create');
     }
