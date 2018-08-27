@@ -30,13 +30,13 @@
                     
                     switch($counter){
                         case 1 : 
-                            $colors="#9e9e9e";
+                            $colors="#616161";
                             break;
                         case 2 : 
-                            $colors="#bdbdbd";
+                            $colors="#757575";
                             break;
                         case 3 : 
-                            $colors="#e0e0e0";
+                            $colors="#9e9e9e";
                             break;
                         
                         case 4 :
@@ -44,12 +44,13 @@
                             break;  
                     }
 
+
                     $counter++;
                     ?>
 
                     &nbsp
                     
-                    <font color="$colors">{{$comment->body}}</font>
+                    <font color="{{ $colors }}">{{$comment->body}}</font>
 
                 @endif
             @endforeach
