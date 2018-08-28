@@ -6,8 +6,8 @@
     </h2>
     
     <p class="blog-post-meta">
-    by {{$post->user->name}}
-    {{  $post-> created_at->toFormattedDateString() }}
+    <p class="text-muted"> by {{$post->user->name}}
+    {{  $post-> created_at->toFormattedDateString() }}</p>
     </p>
     {{$post-> body}}
     
@@ -19,7 +19,7 @@
 
             <?php $counter=1;
             $colors="yellow-text";
-            $seeCommentsButton=true; ?>
+            $seeCommentsButton=false; ?>
 
             @foreach($post->comments as $comment)
                 
@@ -40,7 +40,7 @@
                             break;
                         
                         case 4 :
-                            $seeCommentsButton=false;
+                            $seeCommentsButton=true;
                             break;  
                     }
 

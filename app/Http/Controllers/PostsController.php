@@ -54,8 +54,40 @@ class PostsController extends Controller
             'body' => request('body', 'required'),
             'user_id'=> auth()->id()
         ]);
-
-
-        return redirect('/posts/create');
+        return redirect('/posts');
     }
+
+    public function mypost()
+    {
+        $userPosts = Post::all();
+        return view('posts.userPosts',compact('userPosts'));
+    }
+
+    public function edit(Post $post)
+    {
+        return view('posts.edit', compact('post'));
+    }
+
+    public function update(Post $post)
+    {   
+        $this->validate(request(),[
+            'title'=>'required',
+            'body'=>'required'
+        ]);
+
+
+        $post = $post->update([
+            'title' => request('title','required'),
+            'body' => request('body', 'required') 
+        ]);
+
+        return redirect('/mypost');
+    }
+
+    public function delete($id)
+    {
+        Post::findOrFail($id)->delete();
+        return redirect('/mypost');
+    }
+
 }
