@@ -15,4 +15,8 @@
                 </li>
             @endforeach
         </ol>
+
+        <a href="/posts/">
+            Every post 
+        </a>  
     </div>

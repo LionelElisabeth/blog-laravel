@@ -31,8 +31,8 @@ class Post extends Model
 
     public function scopeFilter($query,$filters)
     {
-        if ($date = request('date')){
-            $posts->whereDate('created_at', '=', $date);
+        if ($date = $filters['date']){
+            $query->whereDate('created_at', '=', $date);
         }
     }
     
