@@ -23,9 +23,11 @@
         .fa-btn {
             margin-right: 6px;
         }
+
+        @include('layouts.sidebarStyle')
     </style>
 </head>
-<body id="app-layout">
+<body id="app-layout"
     <nav class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
@@ -75,6 +77,7 @@
         </div>
     </nav>
     @include('common.errors')
+
     @yield('content')
 
     <!-- JavaScripts -->

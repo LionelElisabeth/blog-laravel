@@ -18,9 +18,37 @@ class PostsController extends Controller
     }
 
     public function index()
-    {
-        $posts = Post::all();
-        return view('posts.index', compact('posts'));
+    {/*
+        $posts = Post::latest()
+            ->filter(request(['day','month','year']))
+            ->get();
+*/
+$posts = Post::latest();
+ 
+        if ($date = request('date')){
+            //$posts->where(day(created_at),27);
+            $posts->whereDate('created_at', '=', $date);
+        }
+/*
+        if ($month = request('month')){
+            //$posts->where(month(created_at),8);
+            $posts->where('created_at', '=', date('Y-8-d'));
+        }
+
+        if ($year = request('year')){
+            //$posts->where(year(created_at),2018);
+            $posts->where('created_at', '=', date('2018-m-d'));
+        }*/
+
+       
+        $posts = $posts->get();
+
+        $archives = Post::selectRaw('year(created_at) year, month(created_at) month,day(created_at) day, count(*) published')
+                     ->groupBy('year','month','day')
+                     ->orderByRaw('min(created_at) desc')
+                     ->get()
+                     ->toArray();
+        return view('posts.index', compact('posts','archives'));
     }
 
     public function show(Post $post)

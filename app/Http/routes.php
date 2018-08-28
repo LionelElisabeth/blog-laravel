@@ -9,9 +9,6 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::get('/home', 'HomeController@index');
 
-    Route::get('/', function(){
-    return redirect('/login');
-    });
 
         ////////////////////////////////////////////////// POSTS
     
@@ -30,6 +27,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::patch('/mypost/{post}','PostsController@update');
 
     Route::delete('/posts/delete/{post}','PostsController@delete');
+
     
     Route::post('/posts/{post}/comments','CommentsController@store');
     

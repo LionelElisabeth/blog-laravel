@@ -8,8 +8,8 @@
 
 
 @section ('content')
-    <a class="navbar-brand" href="{{ url('/posts/create')  }}"> Create post</a>
-    <br><br>
+      
+@include('layouts.sidebarContent')
                  
 <div class="container">
     <div class="col-sm-offset-1 col-sm-8">            

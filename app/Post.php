@@ -27,4 +27,13 @@ class Post extends Model
             'user_id'=> auth()->id()
         ]);
     }
+
+
+    public function scopeFilter($query,$filters)
+    {
+        if ($date = request('date')){
+            $posts->whereDate('created_at', '=', $date);
+        }
+    }
+    
 }

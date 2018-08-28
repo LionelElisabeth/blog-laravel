@@ -9,8 +9,30 @@
     <p class="text-muted"> by {{$post->user->name}}
     {{  $post-> created_at->toFormattedDateString() }}</p>
     </p>
-    {{$post-> body}}
-    
+
+    <?php 
+    $text = $post-> body;
+    $end = 450;
+    $finalChar = " ";
+    if (strlen($post->body)>$end)
+    {   
+       $finalChar = substr($post->body,$end,1);
+ 
+        while($finalChar != ".")
+        {
+            $end++;
+            $finalChar = substr($post->body,$end,1);
+        }
+
+        $text = substr($post->body,0,$end+1);
+
+        if ($end > 450 && $end+1 != strlen($post->body))
+        {   $text = $text . "..";}
+    }
+    ?>
+
+    {{$text}}
+
     <br>
     <br>
     @if (!count($post->comments) == 0)
@@ -19,7 +41,7 @@
 
             <?php $counter=1;
             $colors="yellow-text";
-            $seeCommentsButton=false; ?>
+            $seeCommentsButton=true; ?>
 
             @foreach($post->comments as $comment)
                 
@@ -31,6 +53,7 @@
                     switch($counter){
                         case 1 : 
                             $colors="#616161";
+                            $seeCommentsButton=false;
                             break;
                         case 2 : 
                             $colors="#757575";
@@ -55,10 +78,16 @@
                 @endif
             @endforeach
 
-            @if ($seeCommentsButton)
+            @if ($seeCommentsButton == true)
                 <div>
                     <a href="/posts/{{$post->id}}">
-                        <button type="button" class="btn btn-default">See all the comment.</button>
+                        <button type="button" class="btn btn-default">
+                        @if ($counter == 1)
+                        Come and make a comment.
+                        @else
+                        See all the comment.
+                        @endif
+                        </button>
                     </a>  
                 </div>
             @endif
