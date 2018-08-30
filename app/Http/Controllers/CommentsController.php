@@ -23,6 +23,9 @@ class commentsController extends Controller
         $comment->post_id = $post->id;
         $comment->user_id = auth()->id();
         $comment->save();
+
+        session()->flash('message','Your comment has now been published');
+
         return back(); 
     }
 }

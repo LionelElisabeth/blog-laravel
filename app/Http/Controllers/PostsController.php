@@ -22,12 +22,15 @@ class PostsController extends Controller
         $posts = Post::latest()
             ->filter(request(['day','month','year']))
             ->get();
-*/
+     */
         $posts = Post::latest();
+
         if ($date = request('date')){
             $posts->whereDate('created_at', '=', $date);
         }
+
         $posts = $posts->get();
+
 
         $archives = Post::selectRaw('year(created_at) year, month(created_at) month,day(created_at) day, count(*) published')
                      ->groupBy('year','month','day')
@@ -55,19 +58,22 @@ class PostsController extends Controller
             'title'=>'required|unique:posts,title',
             'body'=>'required'
         ]);
-/*
+     /*
         $post = new Post;
 
         $post->title = request('title');
         $post->body = request('body');
 
         $post->save();
-*/
+     */
         Post::create([
             'title' => request('title','required'),
             'body' => request('body', 'required'),
             'user_id'=> auth()->id()
         ]);
+
+        session()->flash('message','Your post has now been published');
+
         return redirect('/posts');
     }
 
@@ -95,12 +101,18 @@ class PostsController extends Controller
             'body' => request('body', 'required') 
         ]);
 
+        session()->flash('message','Your post has now been updated');
+    
+
         return redirect('/mypost');
     }
 
     public function delete($id)
     {
         Post::findOrFail($id)->delete();
+
+        session()->flash('message','Your post has been deleted');
+
         return redirect('/mypost');
     }
 

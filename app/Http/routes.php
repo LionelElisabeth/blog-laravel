@@ -13,17 +13,20 @@ Route::group(['middleware' => 'web'], function () {
         ////////////////////////////////////////////////// POSTS
     
     Route::get('/posts', 'PostsController@index');
+
+    Route::get('/', 'PostsController@index');
     
     Route::get('/posts/create', 'PostsController@create'); 
     
     Route::get('/posts/{post}', 'PostsController@show'); 
     
     Route::post('/posts','PostsController@store');
+    
 
     Route::get('/mypost', 'PostsController@mypost');
     
     Route::get('/posts/{post}/edit', 'PostsController@edit');
-
+    
     Route::patch('/mypost/{post}','PostsController@update');
 
     Route::delete('/posts/delete/{post}','PostsController@delete');
