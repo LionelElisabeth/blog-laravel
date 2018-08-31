@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>  
+<html>
+<head>
+</head>
+<body>  
+
+<?php
+// define variables and set to empty values
+$id = $name = $cpf = $phone_number = $pasword = "";
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (empty($_POST["action"])) {
+    $actionErr = "Action is required";
+  } else {
+    $action = test_input($_POST["name"]);
+  }
+  
+}
+
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+
+?>
+
+<h2>PHP "info_user" table</h2>
+<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">  
+ 
+  id:  <input type="text" name="id">
+  <br><br>
+  Name:  <input type="text" name="name">
+  <br><br>
+  cpf:  <input type="text" name="cpf">
+  <br><br>
+  phone number: <input type="text" name="phone_number">
+  <br><br>
+  password:  <input type="text" name="password">
+  <br><br>
+
+  Action:
+  <input type="radio" name="action" value="insert">insert
+  <input type="radio" name="action" value="update">update
+  <input type="radio" name="action" value="delete">delete
+
+  <br><br>
+  <input type="submit" name="submit" value="Submit">  
+</form>
+
+<?php
+
+echo $id." | ".$name." | ".$cpf." | ".$phone_number." | ".$password."\n" ;
+
+?>
+
+</body>
+</html>

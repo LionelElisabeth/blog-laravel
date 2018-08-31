@@ -1,0 +1,17 @@
+/usr/bin/mysql -u root -p        --- Enter in mySQL
+exit                             --- 
+
+use <database_name>;              --- ex : cadastro
+SHOW tables;                     --- 	  show all table inside cadastro
+show columns from <table_name>;  ---      show table
+
+
+EX : Creation tableau :
+CREATE TABLE cadastro.info_user (
+	id INT(100), 
+	name CHAR(100),
+	cpf INT(10), 
+	telefone INT(20), 
+	password CHAR(30));
+
+php -S localhost:8000   --- open local server

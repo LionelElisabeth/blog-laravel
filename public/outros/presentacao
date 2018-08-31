@@ -1,0 +1,30 @@
+Presentation :
+
+    - mysql
+        //criação banco de dados por commandos
+            >criar/ver databases/tables
+            >SELECT  DELETE  UPDATE 
+
+
+    - php
+        //pagina de organisação de registros
+            >ligada a um banco de dados
+            >modificava um banco de dados
+
+
+    - git
+        //salvar projeto
+            >commit 
+            >push -> LionelElisabeth
+
+
+    - laravel
+        //blog  
+            >criar/modificar/deletar posts
+            >commentarios
+            >login/logout
+            >imagens/gif
+
+        bootstrap | controllers | routes | views 
+
+    
