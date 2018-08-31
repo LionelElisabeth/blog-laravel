@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!--<link rel="shortcut icon" href="img/boitata_v3.gif" style="width:60px">  -->
+    <link rel="shortcut icon" href="img/boitata.png" style="width:60px">
     <title>@yield('pageName')</title>
 
     <!-- Fonts -->
@@ -63,7 +65,7 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
-
+                    
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">Login</a></li>
                         <li><a href="{{ url('/register') }}">Register</a></li>
@@ -81,7 +83,7 @@
                         </li>
                     
                     @endif
-                
+                    
                 </ul>
             </div>
         </div>

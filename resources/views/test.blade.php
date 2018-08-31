@@ -44,7 +44,19 @@ body {
 </head>
 <body>
 
+<?php
+$url = asset('img/boitataMovie.gif');
+$url2 = asset('img/boitata_v3.gif');
+?>
+
+<img src="{{$url}}" style="width:500px">
+
+<img src="{{$url2}}" style="width:500px">
+
+
+
 <div class="sidenav">
+  <a href="/posts">Home</a>
   <a href="#about">About</a>
   <a href="#services">Services</a>
   <a href="#clients">Clients</a>
